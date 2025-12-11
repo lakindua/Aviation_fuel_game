@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviation Fuel Lab: Chemical Hunt</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Aviation Fuel Lab: Chemical Hunt</h1>
+            <p class="subtitle">Travel to airports worldwide to collect 5 chemical components for aviation fuel synthesis.</p>
+        </header>
+
+        <div class="game-wrapper">
+            <div class="map-section">
+                <div class="map-container">
+                    <div class="top-bar">
+                        <div class="top-item">
+                            <span class="label">Researcher:</span>
+                            <span class="value" id="hud-player">—</span>
+                        </div>
+                        <div class="top-item">
+                            <span class="label">Components:</span>
+                            <span class="value" id="hud-components">0/5</span>
+                        </div>
+                        <div class="top-item">
+                            <span class="label">Budget:</span>
+                            <span class="value" id="hud-budget">—€</span>
+                        </div>
+                        <div class="top-item">
+                            <span class="label">Fuel:</span>
+                            <span class="value" id="hud-fuel">— km</span>
+                        </div>
+                    </div>
+                    <div id="map"></div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="content-display" id="content-display">
+                    <div class="content-header">
+                        <h2 class="content-title" id="content-title">Welcome to the Lab</h2>
+                        <div class="content-subtitle" id="content-subtitle">Start your research journey</div>
+                    </div>
+
+                    <div class="content-body">
+                        <img id="chemical-image" class="chemical-image" src="" alt="" style="display: none">
+                        <p id="content-description" class="content-description">
+                            Begin at an airport. Travel to airports worldwide to collect chemical components for aviation fuel synthesis.
+                        </p>
+
+                        <div id="chemical-properties" class="chemical-properties" style="display: none">
+                            <div class="property">
+                                <div class="property-label">Formula</div>
+                                <div class="property-value" id="prop-formula">—</div>
+                            </div>
+                            <div class="property">
+                                <div class="property-label">Weight</div>
+                                <div class="property-value" id="prop-weight">—</div>
+                            </div>
+                            <div class="property">
+                                <div class="property-label">State</div>
+                                <div class="property-value" id="prop-state">—</div>
+                            </div>
+                            <div class="property">
+                                <div class="property-label">Source</div>
+                                <div class="property-value" id="prop-source">—</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-footer">
+                        <div id="content-location">📍 Location: Not started</div>
+                        <div id="content-meta">Select an airport to begin</div>
+                    </div>
+                </div>
+
+                <div class="controls-container">
+                    <div class="controls">
+                        <button id="travel-btn" class="travel-btn">Start New Game</button>
+                        <button id="buy-fuel-btn" class="fuel-btn">Buy Fuel</button>
+                    </div>
+                    <div style="margin-top: 12px; color: #94a3b8; font-size: 0.9rem; text-align: center">
+                        Select destination on map →
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Aviation Fuel Lab: Chemical Hunt &copy; 2025</p>
+        </footer>
+    </div>
+
+    <div class="win-screen" id="win-screen">
+        <div class="win-content">
+            <h2 style="color: #00b894; margin-bottom: 16px">🎉 Breakthrough Achieved!</h2>
+            <p style="margin-bottom: 24px">You collected all 5 chemical components and successfully synthesized NeoFuel-X!</p>
+
+            <div class="win-stats">
+                <div class="win-stat">
+                    <div class="win-stat-value" id="win-visited">0</div>
+                    <div class="win-stat-label">Airports Visited</div>
+                </div>
+                <div class="win-stat">
+                    <div class="win-stat-value" id="win-distance">0</div>
+                    <div class="win-stat-label">Km Traveled</div>
+                </div>
+                <div class="win-stat">
+                    <div class="win-stat-value" id="win-budget">0</div>
+                    <div class="win-stat-label">Budget Remaining</div>
+                </div>
+                <div class="win-stat">
+                    <div class="win-stat-value" id="win-components">5/5</div>
+                    <div class="win-stat-label">Components Found</div>
+                </div>
+            </div>
+
+            <button class="travel-btn" id="close-win" style="margin-top: 20px">Continue Research</button>
+        </div>
+    </div>
+
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+</body>
+</html>
