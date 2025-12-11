@@ -1,0 +1,75 @@
+CREATE DATABASE aviation_fuel_game;
+USE aviation_fuel_game;
+SOURCE /path/to/your_file.sql;
+
+DROP TABLE IF EXISTS events_reached;
+DROP TABLE IF EXISTS game;
+DROP TABLE IF EXISTS events;
+
+-- Create events table
+CREATE TABLE events (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),
+    money INT,
+    probability INT DEFAULT 1
+);
+
+-- Create game table with the correct structure
+CREATE TABLE game (
+    id VARCHAR(20) PRIMARY KEY,
+    money INT,
+    player_range INT,
+    location VARCHAR(10),
+    screen_name VARCHAR(50),
+    chemicals INT DEFAULT 0,
+    visited_airports TEXT
+);
+
+-- Create events_reached table
+CREATE TABLE events_reached (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    game VARCHAR(20),
+    airport VARCHAR(10),
+    goal INT,
+    FOREIGN KEY (goal) REFERENCES events(id) ON DELETE CASCADE
+);
+
+-- Insert chemical events (money = 0)
+INSERT INTO events (name, money, probability) VALUES
+('Benzene', 0, 1),
+('Ethanol', 0, 1),
+('Octane', 0, 1),
+('Dodecane', 0, 1),
+('Isobutanol', 0, 1),
+('Methanol', 0, 1),
+('Hexane', 0, 1),
+('Cyclohexane', 0, 1),
+('Toluene', 0, 1),
+('Nonane', 0, 1),
+('Acetone', 0, 1),
+('Heptane', 0, 1),
+('Butanol', 0, 1),
+('Phenol', 0, 1),
+('Palmitic acid', 0, 1);
+
+-- Insert positive money events
+INSERT INTO events (name, money, probability) VALUES
+('Lost Cargo Found', 500, 1),
+('Found a Sponsor', 800, 1),
+('Ancient Vault Opened', 1200, 1),
+('Research Grant', 1500, 1),
+('Industry Partnership', 2000, 1),
+('Government Funding', 2500, 1),
+('Private Investment', 3000, 1),
+('Lab Equipment Sale', 1000, 1);
+
+-- Insert negative money events
+INSERT INTO events (name, money, probability) VALUES
+('Fuel Leak', -400, 1),
+('Police Fine', -700, 1),
+('Engine Failure', -1000, 1),
+('Got robbed', -500, 1),
+('Equipment Failure', -600, 1),
+('Budget Cut', -800, 1),
+('Regulatory Fine', -900, 1),
+('Accident Cleanup', -1200, 1);
