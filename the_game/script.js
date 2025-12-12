@@ -158,7 +158,7 @@ function displayWelcomeMessage() {
     document.getElementById('content-title').textContent = 'Welcome to the Lab';
     document.getElementById('content-subtitle').textContent = 'Start your research journey';
     document.getElementById('chemical-image').style.display = 'none';
-    document.getElementById('content-description').textContent = 'Begin at an airport. Travel to airports worldwide to collect chemical components for aviation fuel synthesis. Manage your fuel and budget carefully.';
+    document.getElementById('content-description').textContent = 'Begin at an airport. Travel to airports worldwide to collect chemical components to create new aviation fuel. Manage your fuel and budget carefully.';
     document.getElementById('chemical-properties').style.display = 'none';
     document.getElementById('content-location').textContent = '📍 Location: Not started';
     document.getElementById('content-meta').textContent = 'Click "Start New Game" to begin';
